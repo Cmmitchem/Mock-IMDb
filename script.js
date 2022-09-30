@@ -1,10 +1,10 @@
 const apiBaseUrl = "https://api.themoviedb.org/3";
 const apiKey = "9124a0e1d58a5aa17a09d4d274dd8fec";
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w300';
-
 const moviesGrid = document.getElementById("movies-grid");
 const searchInput = document.getElementById("search-input");
 const searchForm = document.getElementById("search-form");
+const categoryTitle = document.getElementById("category-title");
 
 async function fetchMoviesNowPlaying() {
     const response = await fetch(`${apiBaseUrl}/movie/now_playing?api_key=${apiKey}`);
@@ -24,6 +24,7 @@ async function searchMovies(query){
 }
 
 function handleSearchFormSubmit(event){
+    categoryTitle.innerHTML = "Search Results";
     event.preventDefault();
     const searchQuery = searchInput.value;
     const movies = searchMovies(searchQuery);
